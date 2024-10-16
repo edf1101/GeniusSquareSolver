@@ -17,7 +17,7 @@ def main() -> None:
 
     # Read the image
     print("Reading image...")
-    path = '../res/test_board.jpg'
+    path = '../res/test2.jpg'
     image_reader = ImageReader(path)
     image_reader.process()
 
