@@ -195,38 +195,41 @@ class Board:
         :return: The list of pieces to use.
         """
 
-        pieces = []
-        pieces.append(Piece('Blocker',
+        blocker = Piece(1,'Blocker',
                             "\u001b[38;5;94m", [0.6, 0.4, 0.05],
-                            [[True]]))
-        pieces.append(Piece('Blue',
+                            [[True]])
+        blue = (Piece(2,'Blue',
                             "\u001b[38;5;21m", [0, 0, 1.0],
                             [[True]]))
-        pieces.append(Piece('Brown',
+        brown = (Piece(3,'Brown',
                             "\u001b[38;5;52m", [0.5, 0.3, 0.3],
                             [[True, True]]))
-        pieces.append(Piece('Orange',
+        orange = (Piece(4,'Orange',
                             "\u001b[38;5;208m", [1.0, 0.4, 0],
                             [[True, True, True]]))
-        pieces.append(Piece('Grey',
+        grey = (Piece(5,'Grey',
                             "\u001b[38;5;248m", [0.5, 0.5, 0.5],
                             [[True, True, True, True]]))
-        pieces.append(Piece('Red',
+        red =(Piece(6,'Red',
                             "\u001b[38;5;1m", [1.0, 0, 0],
                             [[False, True, True], [True, True, False]]))
-        pieces.append(Piece('Yellow',
+        yellow = (Piece(7,'Yellow',
                             "\u001b[38;5;11m", [1.0, 0.7, 0],
                             [[True, True, True],
                              [False, True, False]]))
-        pieces.append(Piece('Cyan',
+        cyan = (Piece(8,'Cyan',
                             "\u001b[38;5;45m", [0.2, 0.5, 1.0],
                             [[True, True, True], [True, False, False]]))
-        pieces.append(Piece('Green',
+        green = (Piece(9,'Green',
                             "\u001b[38;5;22m", [0, 1.0, 0],
                             [[True, True], [True, True]]))
-        pieces.append(Piece('Purple',
+        purple = (Piece(10,'Purple',
                             "\u001b[38;5;54m", [0.5, 0, 0.5],
                             [[True, True], [True, False]]))
+
+#  pieces = {Blocker,Grey,Red,Yellow,Cyan,Orange,Green,Purple,Brown,Blue};
+#         pieces = [blocker, blue, brown, orange, grey, red, yellow, cyan, green, purple]
+        pieces = [blocker,grey,red,yellow,cyan,orange,green,purple,brown,blue]
 
         return pieces
 

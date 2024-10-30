@@ -1,6 +1,9 @@
 """
 This module contains the Piece class.
 """
+#pylint: disable=R0913,R0917
+
+
 import typing as t
 import numpy as np
 
@@ -10,13 +13,12 @@ class Piece:
     This represents a piece on the board.
     """
 
-    uuids: set[int] = set()
-
-    def __init__(self, name: str, text_color: str, gui_colour: t.List[float],
+    def __init__(self, uuid: int, name: str, text_color: str, gui_colour: t.List[float],
                  default_mask: t.List[t.List[bool]]) -> None:
         """
         Initialize the piece with the given color and positions.
 
+        :param uuid: The unique identifier for the piece.
         :param name: Name of the piece.
         :param text_color: Colour of the piece.
         :param gui_colour: Colour of the piece in the GUI.
@@ -27,7 +29,7 @@ class Piece:
         self.__gui_colour = gui_colour
         self.__masks = []
         self.__name = name
-        self.__uuid = self.__create_uuid()
+        self.__uuid = uuid
 
         for flip in [True, False]:
             for rotation in [0, 1, 2, 3]:
@@ -38,24 +40,6 @@ class Piece:
                 if not self.mask_exists(new_mask):
                     self.__masks.append(new_mask)
 
-    @staticmethod
-    def __create_uuid() -> int:
-        """
-        Makes a unique number for the piece.
-
-        :return: A UUID for the piece or -1 if it can't.
-        """
-
-        tries = 1
-        found = False
-
-        while tries < 1000 and not found:
-            tries += 1
-            if tries not in Piece.uuids:
-                Piece.uuids.add(tries)
-                return tries
-        return -1
-
     def mask_exists(self, new_mask):
         """
         Determines if the given mask is identical to any existing generated
@@ -65,7 +49,7 @@ class Piece:
         :return: True if given mask is identical to any existing mask, else False.
         """
 
-        return any(np.array_equal(new_mask,m) for m in self.__masks)
+        return any(np.array_equal(new_mask, m) for m in self.__masks)
 
     def get_masks(self):
         """

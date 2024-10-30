@@ -24,10 +24,10 @@ def main() -> None:
 
     # create board
     board = Board(blockers, limit=1)
-    print("Solving...")
+    print("Solving the random board...")
     print(board)
     board.solve()
-    print("Solution:")
+    print("Solution to the random board:")
     print(board)
 
 
